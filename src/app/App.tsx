@@ -3,6 +3,11 @@ import { Button } from './components/button';
 import { CheckCircle2, Shield, Clock, FileCheck, Users, Heart, TrendingUp, Home, Briefcase, Store, Sprout, Baby, DollarSign, Lock, Eye, Headphones, MessageCircle, ChevronDown, Smartphone, ArrowRight, Star } from 'lucide-react';
 import * as Accordion from '@radix-ui/react-accordion';
 
+const CREDIT_APPLICATION_URL = 'https://www.credimas.tech/?company=nexus-servicios-financieros';
+const CONTACT_EMAIL = 'nexussolucionessoporte@gmail.com';
+const CONTACT_PHONE = '+57 320 5359446';
+const CONTACT_PHONE_HREF = 'tel:+573205359446';
+
 export default function App() {
   const [openFaq, setOpenFaq] = useState<string>('');
 
@@ -19,17 +24,17 @@ export default function App() {
       <header className="sticky top-0 z-50 bg-white/97 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center relative overflow-hidden">
+            <div className="flex items-center gap-3 shrink-0 min-w-0">
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center relative overflow-hidden shrink-0">
                   <span className="text-white font-bold text-xl relative z-10">N</span>
                   <div className="absolute inset-0 opacity-20" style={{
                     backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.3) 3px, rgba(255,255,255,0.3) 4px)'
                   }} />
                 </div>
-                <div>
-                  <div className="font-bold text-xl text-primary">Nexus</div>
-                  <div className="text-xs text-muted-foreground -mt-0.5">Soluciones Financieras</div>
+                <div className="min-w-0">
+                  <div className="font-bold text-xl text-primary whitespace-nowrap">Nexus</div>
+                  <div className="text-xs text-muted-foreground -mt-0.5 whitespace-nowrap">Soluciones Financieras</div>
                 </div>
               </div>
             </div>
@@ -53,8 +58,10 @@ export default function App() {
               <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
                 Consultar solicitud
               </Button>
-              <Button variant="primary" size="sm">
-                Solicitar crédito
+              <Button variant="primary" size="sm" asChild>
+                <a href={CREDIT_APPLICATION_URL} target="_blank" rel="noopener noreferrer">
+                  Solicitar crédito
+                </a>
               </Button>
             </div>
           </div>
@@ -88,8 +95,10 @@ export default function App() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" className="text-lg">
-                  Solicitar crédito
+                <Button variant="primary" size="lg" className="text-lg" asChild>
+                  <a href={CREDIT_APPLICATION_URL} target="_blank" rel="noopener noreferrer">
+                    Solicitar crédito
+                  </a>
                 </Button>
                 <Button variant="secondary" size="lg" className="text-lg" onClick={() => scrollToSection('como-funciona')}>
                   Ver cómo funciona
@@ -474,8 +483,11 @@ export default function App() {
                 variant="secondary"
                 size="lg"
                 className="text-lg bg-white text-primary hover:bg-white/95 border-0 shadow-lg"
+                asChild
               >
-                Solicitar crédito
+                <a href={CREDIT_APPLICATION_URL} target="_blank" rel="noopener noreferrer">
+                  Solicitar crédito
+                </a>
               </Button>
             </div>
 
@@ -538,8 +550,18 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-4">Contacto</h4>
               <ul className="space-y-2 text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
-                <li>Email: ayuda@nexus.com</li>
-                <li>Teléfono: 01 8000 123 456</li>
+                <li>
+                  Email:{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+                    {CONTACT_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  Teléfono:{' '}
+                  <a href={CONTACT_PHONE_HREF} className="hover:text-white transition-colors">
+                    {CONTACT_PHONE}
+                  </a>
+                </li>
                 <li>Lunes a Viernes, 8am – 6pm</li>
               </ul>
             </div>
